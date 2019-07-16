@@ -4,7 +4,9 @@ export {
 	make_grid_of,
 	update_cell_states,
 	buffer,
-	draw
+	draw,
+	game_of_life,
+	random_config
 }
 /**
  * 
@@ -90,4 +92,54 @@ function draw(grid, canvas_ctx, rows, cols, resolution){
 		}
 	}
 
+}
+
+function game_of_life(grid){
+	if(!grid){
+		return
+	}
+	let rows = grid.length;
+	let cols = grid[0].length;
+
+	for (let i = 0; i < rows; i ++){
+		for (let j = 0; j < cols; j ++){
+			let active_neighbors = count_neighbors(grid, i, j, rows, cols);
+
+			let cell = grid[i][j] 
+			if(!cell.is_active && active_neighbors === 3){
+				cell.set_next_state(true)
+			}
+			else if (grid[i][j].is_active && (active_neighbors < 2 || active_neighbors > 3) ){
+				cell.set_next_state(false)
+			}
+			
+		}
+	}
+}
+
+function count_neighbors(grid, x, y, rows, cols){
+	if (!grid){
+		return
+	}
+	let total_active = 0;
+	let self = grid[x][y]
+	for (let i = -1; i < 2; i ++){
+		for (let j = -1; j < 2; j++){
+			let row = (x + i + rows) % rows
+			let col = (y + j + cols) % cols
+			let cell = grid[row][col]
+			if (cell.is_active && cell !== self){
+				total_active += 1
+			}
+		}
+	}
+	return total_active
+}
+
+function random_config(grid){
+	grid.forEach(row => {
+		row.forEach(cell => {
+			cell.set_next_state(Math.random() > .5)
+		})
+	})
 }
