@@ -1,5 +1,3 @@
-import Cell from "./Cell";
-
 export {
 	make_grid_of,
 	update_cell_states,
