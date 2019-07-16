@@ -145,6 +145,18 @@ function game_of_life(grid){
 	}
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {BigInteger} x 
+ * @param {BigInteger} y 
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * 
+ * @returns {BigInteger} 
+ * 
+ * Counts active neighbors
+ */
 function count_neighbors(grid, x, y, rows, cols){
 	if (!grid){
 		return
