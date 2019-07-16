@@ -6,6 +6,7 @@ export {
 	game_of_life,
 	random_config
 }
+
 /**
  * 
  * @param {ObjectConstructor} object
@@ -61,6 +62,18 @@ function update_cell_states(grid){
 	})
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {HTMLCanvasElement} canvas 
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * @param {BigInteger} resolution 
+ * 
+ * @return {HTMLCanvasElement}
+ * Creates a new `HTMLCanvasElement`, draws the `grid` on it.
+ * 
+ */
 function buffer(grid, canvas, rows, cols, resolution){
 	const new_canvas = document.createElement('canvas');
 	new_canvas.width = canvas.width;
