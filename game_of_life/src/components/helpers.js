@@ -45,12 +45,12 @@ function make_grid_of(object, rows, cols){
  */
 function update_cell_states(grid){
 	grid.forEach(row => {
-		row.forEach(col => {
-			if(col.is_active && col.next_state ){
-				col.inc_gen()
+		row.forEach(cell => {
+			if(cell.is_active && cell.next_state ){
+				cell.inc_gen()
 			}
-			else if (col.is_active !== col.next_state){
-				col.toggle_active()
+			else if (cell.is_active !== cell.next_state){
+				cell.toggle_active()
 			}
 		})
 	})
