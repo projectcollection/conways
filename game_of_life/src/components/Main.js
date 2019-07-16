@@ -34,7 +34,6 @@ function Main(props) {
 		const canvas = document.getElementById('canvas')
 		game_of_life(grid)
 		update_cell_states(grid)
-		draw(grid, canvas.getContext('2d'), rows, cols, resolution)
 		let buffr = buffer(grid, canvas, rows, cols, resolution)
 		canvas.getContext('2d').drawImage(buffr, 0, 0)
 	},[grid,world_gen])
