@@ -2,7 +2,9 @@ import Cell from "./Cell";
 
 export {
 	make_grid_of,
-	update_cell_states
+	update_cell_states,
+	buffer,
+	draw
 }
 /**
  * 
@@ -44,6 +46,9 @@ function make_grid_of(object, rows, cols){
  * if `_active` and `_next_state` are `true`, will increment Cell._gen (generation count)
  */
 function update_cell_states(grid){
+	if (!grid){
+		return
+	}
 	grid.forEach(row => {
 		row.forEach(cell => {
 			if(cell.is_active && cell.next_state ){
@@ -54,4 +59,35 @@ function update_cell_states(grid){
 			}
 		})
 	})
+}
+
+function buffer(grid, canvas, rows, cols, resolution){
+	const new_canvas = document.createElement('canvas');
+	new_canvas.width = canvas.width;
+	new_canvas.height = canvas.height;
+	var new_context = new_canvas.getContext('2d');
+
+	draw(grid, new_context, rows, cols, resolution);
+	return new_canvas
+}
+
+function draw(grid, canvas_ctx, rows, cols, resolution){
+	if (!grid){
+		return
+	}
+	for (let i = 0; i < rows; i++){
+		for(let j = 0; j < cols; j++){
+			let x = i * resolution;
+			let y = j * resolution;
+
+			if (grid[i][j].is_active) {
+				canvas_ctx.fillStyle = 'black'
+			}
+			else {
+				canvas_ctx.fillStyle = 'white'
+			}
+			canvas_ctx.fillRect(x, y, resolution, resolution)
+		}
+	}
+
 }
