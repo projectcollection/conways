@@ -7,6 +7,7 @@ function Main(props) {
 	const [grid, set_grid] = useState();
 	const [world_gen, set_world_gen] = useState(0);
 
+	const [main_canvas, set_main_canvas] = useState()
 	const [rows, set_rows] = useState()
 	const [cols, set_cols] = useState()
 	const [resolution, set_resolution] = useState(10)
@@ -20,6 +21,8 @@ function Main(props) {
 		let cols = canvas.width/resolution;
 		let new_grid = make_grid_of(Cell, rows, cols)
 		random_config(new_grid)
+
+		set_main_canvas(canvas)
 		set_rows(rows)
 		set_cols(cols)
 		set_grid(new_grid)
@@ -60,6 +63,13 @@ function Main(props) {
 			<button disabled = {is_animating ? true : false} onClick = {() => {
 				set_world_gen(prev_gen => prev_gen + 1)
 			}}>Next</button>
+
+			<button disabled = {is_animating ? true : false} onClick = {() => {
+				set_world_gen(0)
+				random_config(grid)
+				update_cell_states(grid)
+				draw(grid, main_canvas.getContext('2d'), rows, cols, resolution)
+			}}>Reset</button>
 		</div>
 	)
 }
