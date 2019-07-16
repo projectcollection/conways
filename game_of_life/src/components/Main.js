@@ -10,6 +10,9 @@ function Main(props) {
 	const [rows, set_rows] = useState()
 	const [cols, set_cols] = useState()
 	const [resolution, set_resolution] = useState(10)
+
+	const [anim_loop, set_anim_loop] = useState()
+	const [is_animating, set_is_animating] = useState(false)
 	
 	useEffect(() => {
 		const canvas = document.getElementById('canvas')
@@ -35,14 +38,28 @@ function Main(props) {
 
 	return(
 		<div>
+			<div>			
+				<h1>generation: {world_gen}</h1>	
+				<canvas id = 'canvas' width = '500px' height = '500px'/>
+			</div>
+
 			<button onClick = {() => {
-				// test toggle
-				setInterval(() => {
-					set_world_gen(prev_gen => prev_gen + 1)
-				}, 100)
-			}}> click</button>
-			<h1>generation: {world_gen}</h1>	
-			<canvas id = 'canvas' width = '500px' height = '500px'/>
+				if (!is_animating){
+					const loop = setInterval(() => {
+						set_world_gen(prev_gen => prev_gen + 1)
+					}, 100)
+					set_anim_loop(loop)
+					set_is_animating(true)
+				}
+				else {
+					clearInterval(anim_loop)
+					set_is_animating(false)
+				}
+			}}>{is_animating ? 'Stop': 'Animate'}</button>
+			
+			<button disabled = {is_animating ? true : false} onClick = {() => {
+				set_world_gen(prev_gen => prev_gen + 1)
+			}}>Next</button>
 		</div>
 	)
 }
