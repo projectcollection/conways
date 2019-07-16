@@ -116,6 +116,12 @@ function draw(grid, canvas_ctx, rows, cols, resolution){
 
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * 
+ * Checks every `Cell` if it should be `active` in the next generation and sets its `next_state`
+ */
 function game_of_life(grid){
 	if(!grid){
 		return
