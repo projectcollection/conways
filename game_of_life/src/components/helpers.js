@@ -84,6 +84,16 @@ function buffer(grid, canvas, rows, cols, resolution){
 	return new_canvas
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {Object} canvas_ctx - canvas.getContext('2d)
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * @param {BigInteger} resolution 
+ * 
+ * Draws the `grid` on a given canvas context
+ */
 function draw(grid, canvas_ctx, rows, cols, resolution){
 	if (!grid){
 		return
