@@ -81,9 +81,10 @@ function draw(grid, canvas_ctx, rows, cols, resolution){
 		for(let j = 0; j < cols; j++){
 			let x = i * resolution;
 			let y = j * resolution;
-
-			if (grid[i][j].is_active) {
-				canvas_ctx.fillStyle = 'black'
+			
+			let cell = grid[i][j] 
+			if (cell.is_active) {
+				canvas_ctx.fillStyle = `rgb(10,0,${cell.gen * 5})`
 			}
 			else {
 				canvas_ctx.fillStyle = 'white'
