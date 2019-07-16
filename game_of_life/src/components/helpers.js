@@ -176,6 +176,13 @@ function count_neighbors(grid, x, y, rows, cols){
 	return total_active
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * 
+ * Randomly sets the `next_state` of every cell to `true` or `false`
+ * and sets `_gen` to 0
+ */
 function random_config(grid){
 	grid.forEach(row => {
 		row.forEach(cell => {
