@@ -141,6 +141,7 @@ function random_config(grid){
 	grid.forEach(row => {
 		row.forEach(cell => {
 			cell.set_next_state(Math.random() > .5)
+			cell.reset_gen()
 		})
 	})
 }
