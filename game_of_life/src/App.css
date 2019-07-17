@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
@@ -10,12 +11,11 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  max-height: 95vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 
   text-align: left;
@@ -23,6 +23,10 @@
 
 .App-header div{
   margin: 10px;
+}
+
+.App-header h1{
+  margin: 10px 0;
 }
 
 .App-link {
@@ -87,6 +91,21 @@ button:disabled {
   text-align: center;
 }
 
-#rules {
-  max-width: 35%;
+.text-block {
+  max-width: 500px;
+}
+
+.long-text {
+  column-count: 2;
+  column-gap: 10px;
+  column-width: 500px;
+}
+
+#details {
+  text-align: left;
+  padding: 1% 10%;
+}
+
+p {
+  text-indent: 30px;
 }
