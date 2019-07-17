@@ -20,18 +20,18 @@ export {
  * note that no parameters will be passed in when the `object` class is instanciated
  */
 function make_grid_of(object, rows, cols){
-	let grid = new Array(rows)
+	let grid = new Array(rows);
 	if (rows > 0 && cols > 0){
 		for(let i = 0; i < rows; i++){
-			grid[i] = new Array(cols)
+			grid[i] = new Array(cols);
 		}
 
 		for(let i = 0; i < rows; i++){
 			for(let j = 0; j < cols; j++){
-				grid[i][j] = new object()
+				grid[i][j] = new object();
 			}
 		}
-		return grid
+		return grid;
 	}
 	else {
 		throw 'Invalid rows or cols';
@@ -48,18 +48,18 @@ function make_grid_of(object, rows, cols){
  */
 function update_cell_states(grid){
 	if (!grid){
-		return
+		return;
 	}
 	grid.forEach(row => {
 		row.forEach(cell => {
 			if(cell.is_active && cell.next_state ){
-				cell.inc_gen()
+				cell.inc_gen();
 			}
 			else if (cell.is_active !== cell.next_state){
-				cell.toggle_active()
+				cell.toggle_active();
 			}
-		})
-	})
+		});
+	});
 }
 
 /**
@@ -81,7 +81,7 @@ function buffer(grid, canvas, rows, cols, resolution){
 	var new_context = new_canvas.getContext('2d');
 
 	draw(grid, new_context, rows, cols, resolution);
-	return new_canvas
+	return new_canvas;
 }
 
 /**
@@ -96,26 +96,25 @@ function buffer(grid, canvas, rows, cols, resolution){
  */
 function draw(grid, canvas_ctx, rows, cols, resolution){
 	if (!grid){
-		return
+		return;
 	}
-	let x
-	let y
-	let cell
+	let x;
+	let y;
+	let cell;
 	for (let i = 0; i < rows; i++){
 		for(let j = 0; j < cols; j++){
 			x = i * resolution;
 			y = j * resolution;
 			cell = grid[i][j];
 			if (cell.is_active) {
-				canvas_ctx.fillStyle = `rgb(10,0,${cell.gen * 5})`
+				canvas_ctx.fillStyle = `rgb(10,0,${cell.gen * 5})`;
 			}
 			else {
-				canvas_ctx.fillStyle = 'white'
+				canvas_ctx.fillStyle = 'white';
 			}
-			canvas_ctx.fillRect(x, y, resolution, resolution)
+			canvas_ctx.fillRect(x, y, resolution, resolution);
 		}
 	}
-
 }
 
 /**
@@ -126,24 +125,23 @@ function draw(grid, canvas_ctx, rows, cols, resolution){
  */
 function game_of_life(grid){
 	if(!grid){
-		return
+		return;
 	}
 	let rows = grid.length;
 	let cols = grid[0].length;
-	let active_neighbors
-	let cell
+	let active_neighbors;
+	let cell;
 	for (let i = 0; i < rows; i ++){
 		for (let j = 0; j < cols; j ++){
 			active_neighbors = count_neighbors(grid, i, j, rows, cols);
-			cell = grid[i][j] 
+			cell = grid[i][j];
 
 			if(!cell.is_active && active_neighbors === 3){
-				cell.set_next_state(true)
+				cell.set_next_state(true);
 			}
 			else if (grid[i][j].is_active && (active_neighbors < 2 || active_neighbors > 3) ){
-				cell.set_next_state(false)
+				cell.set_next_state(false);
 			}
-			
 		}
 	}
 }
@@ -162,24 +160,24 @@ function game_of_life(grid){
  */
 function count_neighbors(grid, x, y, rows, cols){
 	if (!grid){
-		return
+		return;
 	}
 	let total_active = 0;
-	let self = grid[x][y]
-	let row
-	let col
-	let cell
+	let self = grid[x][y];
+	let row;
+	let col;
+	let cell;
 	for (let i = -1; i < 2; i ++){
 		for (let j = -1; j < 2; j++){
-			row = (x + i + rows) % rows
-			col = (y + j + cols) % cols
-			cell = grid[row][col]
+			row = (x + i + rows) % rows;
+			col = (y + j + cols) % cols;
+			cell = grid[row][col];
 			if (cell.is_active && cell !== self){
-				total_active += 1
+				total_active += 1;
 			}
 		}
 	}
-	return total_active
+	return total_active;
 }
 
 /**
@@ -192,8 +190,8 @@ function count_neighbors(grid, x, y, rows, cols){
 function random_config(grid){
 	grid.forEach(row => {
 		row.forEach(cell => {
-			cell.set_next_state(Math.random() > .5)
-			cell.reset_gen()
+			cell.set_next_state(Math.random() > .5);
+			cell.reset_gen();
 		})
 	})
 }
