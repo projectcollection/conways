@@ -130,12 +130,13 @@ function game_of_life(grid){
 	}
 	let rows = grid.length;
 	let cols = grid[0].length;
-
+	let active_neighbors
+	let cell
 	for (let i = 0; i < rows; i ++){
 		for (let j = 0; j < cols; j ++){
-			let active_neighbors = count_neighbors(grid, i, j, rows, cols);
+			active_neighbors = count_neighbors(grid, i, j, rows, cols);
+			cell = grid[i][j] 
 
-			let cell = grid[i][j] 
 			if(!cell.is_active && active_neighbors === 3){
 				cell.set_next_state(true)
 			}
