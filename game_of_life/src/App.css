@@ -109,3 +109,15 @@ button:disabled {
 p {
   text-indent: 30px;
 }
+
+@media(max-width: 500px){
+  #canvas {
+    width: 300px;
+    height: 300px;
+  }
+
+  .App-header {
+    flex-direction: column;
+    max-height: unset;
+  }
+}
