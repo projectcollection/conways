@@ -1,5 +1,3 @@
-import Cell from "./Cell";
-
 export {
 	make_grid_of,
 	update_cell_states,
@@ -8,6 +6,7 @@ export {
 	game_of_life,
 	random_config
 }
+
 /**
  * 
  * @param {ObjectConstructor} object
@@ -63,6 +62,18 @@ function update_cell_states(grid){
 	})
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {HTMLCanvasElement} canvas 
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * @param {BigInteger} resolution 
+ * 
+ * @return {HTMLCanvasElement}
+ * Creates a new `HTMLCanvasElement`, draws the `grid` on it.
+ * 
+ */
 function buffer(grid, canvas, rows, cols, resolution){
 	const new_canvas = document.createElement('canvas');
 	new_canvas.width = canvas.width;
@@ -73,6 +84,16 @@ function buffer(grid, canvas, rows, cols, resolution){
 	return new_canvas
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {Object} canvas_ctx - canvas.getContext('2d)
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * @param {BigInteger} resolution 
+ * 
+ * Draws the `grid` on a given canvas context
+ */
 function draw(grid, canvas_ctx, rows, cols, resolution){
 	if (!grid){
 		return
@@ -95,6 +116,12 @@ function draw(grid, canvas_ctx, rows, cols, resolution){
 
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * 
+ * Checks every `Cell` if it should be `active` in the next generation and sets its `next_state`
+ */
 function game_of_life(grid){
 	if(!grid){
 		return
@@ -118,6 +145,18 @@ function game_of_life(grid){
 	}
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * @param {BigInteger} x 
+ * @param {BigInteger} y 
+ * @param {BigInteger} rows 
+ * @param {BigInteger} cols 
+ * 
+ * @returns {BigInteger} 
+ * 
+ * Counts active neighbors
+ */
 function count_neighbors(grid, x, y, rows, cols){
 	if (!grid){
 		return
@@ -137,10 +176,18 @@ function count_neighbors(grid, x, y, rows, cols){
 	return total_active
 }
 
+/**
+ * 
+ * @param {[[Cell]]} grid 
+ * 
+ * Randomly sets the `next_state` of every cell to `true` or `false`
+ * and sets `_gen` to 0
+ */
 function random_config(grid){
 	grid.forEach(row => {
 		row.forEach(cell => {
 			cell.set_next_state(Math.random() > .5)
+			cell.reset_gen()
 		})
 	})
 }

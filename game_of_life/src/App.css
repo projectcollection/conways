@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
@@ -10,13 +11,22 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  max-height: 95vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+
+  text-align: left;
+}
+
+.App-header div{
+  margin: 10px;
+}
+
+.App-header h1{
+  margin: 10px 0;
 }
 
 .App-link {
@@ -30,4 +40,72 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* buttons style copied from https://codepen.io/matt-daniel-brown/pen/wLdxyg */
+button {
+  -webkit-appearance: none !important;
+     -moz-appearance: none !important;
+          appearance: none !important;
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #CE9FFC 0%, #7367F0 100%);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 18px;
+  line-height: 2.5;
+  padding: 0 1em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 150ms;
+  box-shadow: 0 8px 20px -10px #7367f0;
+  min-width: 144px;
+  display: inlin-block;
+  margin: 1em 5px;
+  background: #5a02ff;
+  background: linear-gradient(135deg, #5a02ff 0%, #8200ff 100%);
+}
+button:hover {
+  opacity: 0.75;
+}
+button:active {
+  opacity: 0.5;
+  box-shadow: 0 0 8px 0 #7367f0;
+  -webkit-transform: translate3d(0, 2px, 0);
+          transform: translate3d(0, 2px, 0);
+}
+button:disabled {
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+#reset_btn {
+  background: linear-gradient(135deg, #ff39b3 0%, #f242f8 100%);
+}
+
+#next_btn {
+  background: linear-gradient(135deg, #eaf33a 0%, #42f842 100%);
+}
+
+#main {
+  text-align: center;
+}
+
+.text-block {
+  max-width: 500px;
+}
+
+.long-text {
+  column-count: 2;
+  column-gap: 10px;
+  column-width: 500px;
+}
+
+#details {
+  text-align: left;
+  padding: 1% 10%;
+}
+
+p {
+  text-indent: 30px;
 }

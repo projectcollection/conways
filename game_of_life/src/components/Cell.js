@@ -28,6 +28,10 @@ export default class Cell {
 		this._gen += inc
 	}
 
+	reset_gen(){
+		this._gen = 0
+	}
+
 	get gen(){
 		return this._gen
 	}

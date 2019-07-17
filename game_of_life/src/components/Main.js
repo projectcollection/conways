@@ -10,7 +10,7 @@ function Main(props) {
 	const [main_canvas, set_main_canvas] = useState()
 	const [rows, set_rows] = useState()
 	const [cols, set_cols] = useState()
-	const [resolution, set_resolution] = useState(10)
+	const [resolution] = useState(10)
 
 	const [anim_loop, set_anim_loop] = useState()
 	const [is_animating, set_is_animating] = useState(false)
@@ -34,7 +34,6 @@ function Main(props) {
 		const canvas = document.getElementById('canvas')
 		game_of_life(grid)
 		update_cell_states(grid)
-		draw(grid, canvas.getContext('2d'), rows, cols, resolution)
 		let buffr = buffer(grid, canvas, rows, cols, resolution)
 		canvas.getContext('2d').drawImage(buffr, 0, 0)
 	},[grid,world_gen])
@@ -60,11 +59,11 @@ function Main(props) {
 				}
 			}}>{is_animating ? 'Stop': 'Animate'}</button>
 			
-			<button disabled = {is_animating ? true : false} onClick = {() => {
+			<button id = 'next_btn' disabled = {is_animating ? true : false} onClick = {() => {
 				set_world_gen(prev_gen => prev_gen + 1)
 			}}>Next</button>
 
-			<button disabled = {is_animating ? true : false} onClick = {() => {
+			<button id = 'reset_btn' disabled = {is_animating ? true : false} onClick = {() => {
 				set_world_gen(0)
 				random_config(grid)
 				update_cell_states(grid)
