@@ -2,7 +2,7 @@ export default class Cell {
 	constructor(active = false){
 		this._active = active;
 		this._gen = 0;
-		this._next_state = active
+		this._next_state = active;
 	}
 
 	toggle_active(){
@@ -21,18 +21,18 @@ export default class Cell {
 	}
 
 	get next_state(){
-		return this._next_state
+		return this._next_state;
 	}
 
 	inc_gen(inc = 1){
-		this._gen += inc
+		this._gen += inc;
 	}
 
 	reset_gen(){
-		this._gen = 0
+		this._gen = 0;
 	}
 
 	get gen(){
-		return this._gen
+		return this._gen;
 	}
 }
