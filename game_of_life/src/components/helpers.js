@@ -163,11 +163,14 @@ function count_neighbors(grid, x, y, rows, cols){
 	}
 	let total_active = 0;
 	let self = grid[x][y]
+	let row
+	let col
+	let cell
 	for (let i = -1; i < 2; i ++){
 		for (let j = -1; j < 2; j++){
-			let row = (x + i + rows) % rows
-			let col = (y + j + cols) % cols
-			let cell = grid[row][col]
+			row = (x + i + rows) % rows
+			col = (y + j + cols) % cols
+			cell = grid[row][col]
 			if (cell.is_active && cell !== self){
 				total_active += 1
 			}
