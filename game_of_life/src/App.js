@@ -10,7 +10,7 @@ function App() {
 				<div id = 'main'>
 					<Main/>
 				</div>
-				<div id = 'rules' class = 'text-block'>
+				<div id = 'rules' className= 'text-block'>
 					<p>For each cell, it counts that cell's eight neighbors (up, down, left, right, and diagonals), and then act on that result.</p>
 					<ul>
 						<li>
@@ -20,13 +20,13 @@ function App() {
 							If the cell is dead and has exactly 3 neighbors, then it comes to life. Else if remains dead.
 						</li>
 					</ul>
-					<h2>See implementation details on <a class = 'App-link' href = 'https://github.com/projectcollection/conways' target = '_blank' rel = 'noopener noreferrer'>github</a></h2>
+					<h2>See implementation details on <a className= 'App-link' href = 'https://github.com/projectcollection/conways' target = '_blank' rel = 'noopener noreferrer'>github</a></h2>
 				</div>
 			</div>
 
 			<div id = 'details'>
 				<h1>Introduction</h1>
-				<p class = ''>
+				<p className= ''>
 					The <b>The Game of Life</b> is a cellular automaton made by <a href = 'https://en.wikipedia.org/wiki/John_Horton_Conway'>John Conway</a> in 1970. It is derived from <a href = 'https://en.wikipedia.org/wiki/John_von_Neumann'>John von Neumann's</a> definition of life:
 					a being which can reproduce itself and simulate a <a href = 'https://en.wikipedia.org/wiki/Turing_machine'>Turing Machine</a>. It was created by experimentations with the rules by which the state of a "Cell" will change. Conway's goal was to define an interesting and
 					unpredictable automaton. He figured out the rules stated above by following his own criteria:
