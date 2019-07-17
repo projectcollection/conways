@@ -59,11 +59,11 @@ function Main(props) {
 				}
 			}}>{is_animating ? 'Stop': 'Animate'}</button>
 			
-			<button disabled = {is_animating ? true : false} onClick = {() => {
+			<button id = 'next_btn' disabled = {is_animating ? true : false} onClick = {() => {
 				set_world_gen(prev_gen => prev_gen + 1)
 			}}>Next</button>
 
-			<button disabled = {is_animating ? true : false} onClick = {() => {
+			<button id = 'reset_btn' disabled = {is_animating ? true : false} onClick = {() => {
 				set_world_gen(0)
 				random_config(grid)
 				update_cell_states(grid)
