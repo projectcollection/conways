@@ -31,11 +31,13 @@ function Main(props){
 	},[resolution]);
 
 	useEffect(() => {
-		const canvas = document.getElementById('canvas');
+		if (!main_canvas){
+			return
+		}
 		game_of_life(grid);
 		update_cell_states(grid);
-		let buffr = buffer(grid, canvas, rows, cols, resolution);
-		canvas.getContext('2d').drawImage(buffr, 0, 0);
+		let buffr = buffer(grid, main_canvas, rows, cols, resolution);
+		main_canvas.getContext('2d').drawImage(buffr, 0, 0);
 	},[grid,world_gen]);
 
 	return(
