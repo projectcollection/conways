@@ -170,7 +170,7 @@ The changing of the value of `world_gen` is what triggers the code block above.
     }}>{is_animating ? 'Stop': 'Animate'}</button>
 ```
 
-# ConclusionsObservations
+# Conclusions/Observations
 
 Looking back at what the implementation, I don't know of way to make it more efficient. Currently it could handle a 100x100 grid fairly well. When I increased it to 150x150, it
 started to struggle, and at 500x500 it runs really slowy. However, when ran on a phone, an
