@@ -43,7 +43,7 @@ So there are a couple of things needed:
 
 **React.js** is being used for this project. Mainly because it is within the developer's
 skillset, and state management in **React** is easy. To render the grid itself, `<div>`
-elements could be used. However, it can be time-consuming to style then with *CSS*. A `<canvas>` is used instead of multiple `<div>` elements. A 2D array is used to represent
+elements could be used. However, it can be time-consuming to style them with *CSS*. A `<canvas>` is used instead of multiple `<div>` elements. A 2D array is used to represent
 the grid stored with cells.
 
 Heres how a 2x2 grid would look like:
