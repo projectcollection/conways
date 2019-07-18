@@ -31,7 +31,7 @@ function Main(props){
 
 	useEffect(() => {
 		if (!main_canvas){
-			return
+			return;
 		}
 		game_of_life(grid);
 		update_cell_states(grid);
@@ -49,7 +49,7 @@ function Main(props){
 			<button onClick = {() => {
 				if (!is_animating){
 					const loop = setInterval(() => {
-						set_world_gen(prev_gen => prev_gen + 1)
+						set_world_gen(prev_gen => prev_gen + 1);
 					}, 100);
 					set_anim_loop(loop);
 					set_is_animating(true);
