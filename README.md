@@ -43,7 +43,7 @@ So there are a couple of things needed:
 
 **React.js** is being used for this project. Mainly because it is within the developer's
 skillset, and state management in **React** is easy. To render the grid itself, `<div>`
-elements could be used. However, it can be time-consuming to style then with *CSS*. A `<canvas>` is used instead of multiple `<div>` elements. A 2D array is used to represent
+elements could be used. However, it can be time-consuming to style them with *CSS*. A `<canvas>` is used instead of multiple `<div>` elements. A 2D array is used to represent
 the grid stored with cells.
 
 Heres how a 2x2 grid would look like:
@@ -170,7 +170,7 @@ The changing of the value of `world_gen` is what triggers the code block above.
     }}>{is_animating ? 'Stop': 'Animate'}</button>
 ```
 
-# ConclusionsObservations
+# Conclusions/Observations
 
 Looking back at what the implementation, I don't know of way to make it more efficient. Currently it could handle a 100x100 grid fairly well. When I increased it to 150x150, it
 started to struggle, and at 500x500 it runs really slowy. However, when ran on a phone, an
