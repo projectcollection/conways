@@ -26,12 +26,11 @@ function Main(props){
 		set_rows(rows);
 		set_cols(cols);
 		set_grid(new_grid);
-		update_cell_states(grid);
 		draw(grid, canvas.getContext('2d'), rows, cols, resolution);
 	},[resolution]);
 
 	useEffect(() => {
-		if (!main_canvas){
+		if (!main_canvas || world_gen === 0){
 			return
 		}
 		game_of_life(grid);
