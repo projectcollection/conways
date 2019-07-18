@@ -30,7 +30,7 @@ function Main(props){
 	},[resolution]);
 
 	useEffect(() => {
-		if (!main_canvas || world_gen === 0){
+		if (!main_canvas){
 			return
 		}
 		game_of_life(grid);
