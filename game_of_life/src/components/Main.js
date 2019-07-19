@@ -10,7 +10,7 @@ function Main(props){
 	const [main_canvas, set_main_canvas] = useState();
 	const [rows, set_rows] = useState();
 	const [cols, set_cols] = useState();
-	const [resolution] = useState(1);
+	const [resolution] = useState(5);
 
 	const [anim_loop, set_anim_loop] = useState();
 	const [is_animating, set_is_animating] = useState(false);
